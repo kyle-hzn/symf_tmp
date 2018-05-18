@@ -1,0 +1,16 @@
+easy_admin:
+    entities:
+      Blog:
+          class: App\Entity\Blog
+          title: 'Blog'
+          form:
+              fields:
+                  - { property: 'title', label: 'Titre article', css_class: 'col-lg-6'}
+                  - { property: 'author', label: 'Auteur', css_class: 'col-lg-6'}
+                  - { property: 'content', label: 'Contenu article', css_class: 'col-lg-12'}
+          list:
+              title: "Blog"
+              fields:
+                  - { property: 'title', label: 'Titre article'}
+                  - { property: 'author', label: 'Auteur article'}
+                  - { property: 'content', label: 'Contenu de article'}

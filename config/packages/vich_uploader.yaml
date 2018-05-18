@@ -1,0 +1,13 @@
+parameters:
+    app.path.product_images: /uploads
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        images_file:
+            uri_prefix:         '%app.path.product_images%'
+            upload_destination: '%kernel.root_dir%/../public/uploads'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
