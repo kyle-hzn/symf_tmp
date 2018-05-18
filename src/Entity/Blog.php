@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Symfony\Component\HttpFoundation\File\File as SymfoFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
+ * @ORM\Table(name="blog")
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
+ * @Vich\Uploadable
  */
 class Blog
 {
@@ -30,6 +34,27 @@ class Blog
      * @ORM\Column(type="text")
      */
     private $content;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstImage", type="string", length=255)
+     */
+    private $firstImage;
+
+    /**
+     * @var string
+     *
+     * @Vich\UploadableField(mapping="images_file", fileNameProperty="firstImage")
+     * @var File
+     */
+    private $firstImageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     public function getId()
     {
@@ -70,5 +95,67 @@ class Blog
         $this->content = $content;
 
         return $this;
+    }
+
+    /**
+     * Set firstImage
+     *
+     * @param string $firstImage
+     *
+     * @return Blog
+     */
+    public function setFirstImage($firstImage)
+    {
+        $this->firstImage = $firstImage;
+
+        return $this;
+    }
+
+    /**
+     * Get firstImage
+     *
+     * @return string
+     */
+    public function getFirstImage()
+    {
+        return $this->firstImage;
+    }
+
+    /**
+     * Set firstImageFile
+     *
+     * @param string $firstImageFile
+     *
+     * @return Blog
+     */
+    public function setFirstImageFile(SymfoFile $image = null)
+    {
+        $this->firstImageFile = $image;
+
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get firstImageFile
+     *
+     * @return string
+     */
+    public function getFirstImageFile()
+    {
+        return $this->firstImageFile;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
