@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Symfony Website{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('./css/main.css') }}">
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+        
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
