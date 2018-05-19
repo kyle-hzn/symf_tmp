@@ -1,0 +1,54 @@
+// Load Fonts
+@font-face {
+	font-family: 'BrownStd';
+	font-weight: 300;
+	src: url('../fonts/BrownStd-Light.woff') format('woff'),
+	url('../fonts/BrownStd-Light.ttf')  format('truetype')
+}
+@font-face {
+	font-family: 'BrownStd';
+	font-weight: 400;
+	src: url('../fonts/BrownStd.woff') format('woff'),
+		url('../fonts/BrownStd.ttf')  format('truetype')
+}
+@font-face {
+	font-family: 'BrownStd';
+	font-weight: 600;
+	src: url('../fonts/brownstd-bold.woff') format('woff'),
+	url('../fonts/brownstd-bold.ttf')  format('truetype')
+}
+@font-face {
+	font-family: 'Benguiat';
+	font-weight: 600;
+	src: url('../fonts/benguiat.woff') format('woff'),
+	url('../fonts/benguiat.ttf')  format('truetype')
+}
+
+body {
+	font-family: 'BrownStd', 'Roboto', sans-serif;
+	box-sizing: border-box;
+	font-size:16px;
+}
+*{
+	box-sizing: border-box;
+	letter-spacing: 1px;
+	line-height: 1.4;
+}
+
+a{
+	text-decoration: none;
+}
+img{
+	max-width:100%
+}
+
+// Global Variables
+$black: #000;
+$white: #FFFDFB;
+$beige: #F3F0ED;
+$light-blue: #5F9796;
+$accent-orange: #d6751b;
+$dark-green: #072727;
+
+$font-global: 'BrownStd';
+$font-accent: 'Benguiat';

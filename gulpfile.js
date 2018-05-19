@@ -1,60 +1,75 @@
-var gulp = require( 'gulp' );
+const scssInput = ['./assets/scss/style.scss'],
+    scssOutput = './public/css',
+    vendorInput = [
+        './assets/scripts/vendor/*.js'
+    ],
+    jsInput = [
+        './assets/scripts/domain/*.js'
+    ],
+    jsOutput = './public/scripts';
 
-gulp.task( 'default', function()
-{
-    console.log( 'Lauching Gulp...' );
-} );
-
-// Dependencies
-var gulp          = require( 'gulp'         ),
-    gulp_css_nano = require( 'gulp-cssnano' ),
-    gulp_rename   = require( 'gulp-rename'  ),
-    gulp_concat   = require( 'gulp-concat'  ),
-    gulp_uglify   = require( 'gulp-uglify'  ),
-    gulp_plumber  = require( 'gulp-plumber' ),
-    gulp_stylus   = require( 'gulp-stylus'  );
-    gulp_sass     = require( 'gulp-sass'  );
-
-var config = {
-    bowerDir: './public/components',
-    stylusPath: './assets/stylus',
-    cssPath: './public/css',
-    jsPath: './public/js'
-}
+// Start everything up.
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const browserSync = require('browser-sync').create();
+const plumber = require('gulp-plumber');
 
 
-// CSS task+Stylus
-gulp.task( 'stylus', function()
-{
-    gulp.src( [config.stylusPath + '/main.styl',  config.stylusPath + '/pages/**' ] )   // main.styl as input
-        .pipe( gulp_plumber() )                    // Print errors
-        .pipe( gulp_stylus( { compress: true } ) ) // Convert to CSS
-        .pipe( gulp.dest( './public/css' ) );         // Put it in CSS folder
-} );
+// Watch SASS.
+gulp.task('sass', function() {
+    return gulp
+        .src(scssInput)
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(scssOutput))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
+gulp.task('domainScripts', function() {
+    return gulp.src(jsInput)
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(concat('scripts.js'))
+        .pipe(gulp.dest(jsOutput))
+        .pipe(rename('scripts.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(jsOutput));
+});
+
+gulp.task('vendorScripts', function() {
+    return gulp.src(vendorInput)
+        .pipe(plumber())
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest(jsOutput));
+});
+
+gulp.task('browserSync', function() {
+    browserSync.init({
+        server: {
+            baseDir: 'app'
+        },
+    })
+})
 
 
-// JS task
-gulp.task( 'js', function()
-{
-    return gulp.src( [                          // Get JS files (in order)
-        config.jsPath + '/**'
-    ] )
-        .pipe( gulp_concat( 'main_js.min.js' ) )   // Concat in one file
-        .pipe( gulp_uglify() )                  // Minify them
-        .pipe( gulp.dest( './public/js' ) );       // Put it in folder
-} );
-
-
-// Watch task
-gulp.task( 'watch', function()
-{
-    // Watch for STYLUS modifications
-    gulp.watch(config.stylusPath + '/**', [ 'stylus' ] );
-
-    // Watch for JS modifications
-    gulp.watch(config.jsPath + '/**', [ 'js' ] );
-
-
-} );
-
-gulp.task( 'default', [ 'stylus', 'js', 'watch' ] );
+gulp.task('watch', ['sass', 'domainScripts', 'vendorScripts', 'browserSync'], function (){
+    gulp.watch('./assets/scss/**/*.scss', ['sass', browserSync.reload]);
+    gulp.watch('app/**/*.html', browserSync.reload);
+    gulp.watch('./assets/scripts/domain/**/*.js', ['domainScripts', browserSync.reload]);
+    gulp.watch('./assets/scripts/vendor/**/*.js', ['vendorScripts', browserSync.reload]);
+});

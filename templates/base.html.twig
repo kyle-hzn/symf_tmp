@@ -1,15 +1,73 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Symfony Website{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('./css/main.css') }}">
-    </head>
-    <body>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Airpool</title>
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('/images/favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('/images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <link rel="shortcut icon" href="{{ asset('/images/favicon/favicon.ico') }}">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-config" content="{{ asset('/images/favicon/browserconfig.xml') }}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+<header class="header">
+    <a class="home-link" href="/">
+        <img src="{{ asset('/images/logo.png') }}" alt="logo" class="home-link__image">
+    </a>
+    <div class="search">
+        <input type="text" placeholder="Essayez Marseille..." class="search__input">
+        <button type="submit" class="search__submit"><img src="{{ asset('/images/loupe.png') }}" alt="Soumettre" class="search__submit__image"></button>
+    </div>
+    <nav class="navigation">
+        <a href="#" class="navigation__link">Connexion</a>
+        <a href="#" class="navigation__link">Inscription</a>
+        <a href="#" class="navigation__link">Déposer une annonce</a>
+        <a href="#" class="navigation__link">Les piscines</a>
+    </nav>
+</header>
         {% block body %}
         {% endblock %}
         
         {% block js %}
         {% endblock %}
-    </body>
+<footer class="footer">
+    <div class="site-description">
+        <div class="site-description__logo">
+            <img src="{{ asset('/images/logo.png') }}" alt="Logo"> Airpool
+        </div>
+        <p>Airpool est la plateforme la plus simple et la plus accessible pour louer de magnifiques piscines chez des particuliers au cours de vos vacances ou week-ends.</p>
+    </div>
+    <div class="contact-infos">
+        <h4>Contactez nous</h4>
+        <a href="mailto:yo@airpool.com" class="contact-infos__link">contact@airpool.com</a>
+        <p>27 rue du progrès,<br>93100 Montreuil</p>
+        <a href="tel:0618033988" class="contact-infos__link">+33 6 18 03 39 88</a>
+    </div>
+    <div class="socials">
+        <h4>Suivez nous</h4>
+        <p class="socials__icons">
+            <a href="http://facebook.com" class="socials__icon" target="_blank"><img src="{{ asset('/images/facebook.png') }}" alt="facebook"></a>
+            <a href="http://twitter.com" class="socials__icon" target="_blank"><img src="{{ asset('/images/twitter.png') }}" alt="twitter"></a>
+            <a href="http://instagram.com" class="socials__icon" target="_blank"><img src="{{ asset('/images/instagram.png') }}" alt="instagram"></a>
+        </p>
+    </div>
+    <hr class="footer__separator">
+    <nav class="secondary-nav">
+        <a href="#" class="secondary-nav__item">Condition générales de vente</a>
+        <a href="#" class="secondary-nav__item">Mentions légales</a>
+        <a href="#" class="secondary-nav__item">Politique de confidentialité</a>
+    </nav>
+    <div class="copyright"> &copy; AirPool 2018 </div>
+</footer>
+
+<script type="text/javascript" src="{{ asset('/scripts/pikaday.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/scripts/vendor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/scripts/scripts.min.js') }}"></script>
+</body>
 </html>

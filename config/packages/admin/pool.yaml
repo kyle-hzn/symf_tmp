@@ -1,0 +1,20 @@
+easy_admin:
+    entities:
+      Pool:
+          class: App\Entity\Pool
+          title: 'Piscines'
+          form:
+              fields:
+                  - { property: 'type', label: 'Type de piscine', css_class: 'col-lg-6'}
+                  - { property: 'name', label: 'Nom du spot', css_class: 'col-lg-6'}
+                  - { property: 'price', label: 'Prix par personne', css_class: 'col-lg-6'}
+                  - { property: 'slug', label: 'Slug', css_class: 'col-lg-6'}
+                  - { property: 'longitude', label: 'Longitude', css_class: 'col-lg-6'}
+                  - { property: 'latitude', label: 'Latitude', css_class: 'col-lg-6'}
+                  - { property: 'imageFile', type: 'vich_image', base_path: '%app.path.product_images%', label: 'Image piscine', css_class: 'col-sm-12'}
+          list:
+              title: "Piscine"
+              fields:
+                  - { property: 'type', label: 'Type de piscine', css_class: 'col-lg-6'}
+                  - { property: 'name', label: 'Nom du spot', css_class: 'col-lg-6'}
+                  - { property: 'price', label: 'Prix par personne', css_class: 'col-lg-12'}

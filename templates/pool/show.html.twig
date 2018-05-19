@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ piscine.slug }}!{% endblock %}
+
+{% block body %}
+    <main class="app app--page-produit">
+        <div class="product">
+            <div class="product__image-container">
+                <img src="/uploads/{{ piscine.image }}" class="product__image">
+                <div class="product__image--top">
+                    <img src="{{ asset('/images/heart.png') }}" class="product__addtofavorite">
+                    <img src="{{ asset('/images/share.png') }}" class="product__share">
+                </div>
+                <img src="{{ asset('/images/map.png') }}" class="product__map">
+            </div>
+            <header class="product__header">
+                <h1 class="product__title">{{ piscine.name }}</h1>
+                <p class="product__type">{{ piscine.type }}</p>
+                <div class="owner">
+                    <img src="{{ asset('/images/owner.png') }}" class="owner__picture">
+                    <p class="owner__name">Miguel R.</p>
+                </div>
+                <div></div>
+            </header>
+            <div class="caracteristics">
+                <h4 class="caracteristics__title">Equipements</h4>
+                <ul class="caracteristic-list">
+                    <li class="caracteristic caracteristic--is-present">Barbecue</li>
+                    <li class="caracteristic caracteristic--is-not-present">Serviettes fournies</li>
+                    <li class="caracteristic caracteristic--is-not-present">Tobogan</li>
+                    <li class="caracteristic caracteristic--is-present">Transat</li>
+                    <li class="caracteristic caracteristic--is-present">Douche</li>
+                    <li class="caracteristic caracteristic--is-present">Pataugeoir enfant</li>
+                    <li class="caracteristic caracteristic--is-not-present">Table de ping-pong</li>
+                    <li class="caracteristic caracteristic--is-present">Chauffée</li>
+                    <li class="caracteristic caracteristic--is-present">Réfrigérateur</li>
+                </ul>
+            </div>
+            <div class="caracteristics">
+                <h4 class="caracteristics__title">Restauration</h4>
+                <ul class="caracteristic-list">
+                    <li class="caracteristic caracteristic--is-present">Non</li>
+                    <li class="caracteristic caracteristic--is-not-present">Oui</li>
+                </ul>
+            </div>
+            <div class="caracteristics">
+                <h4 class="caracteristics__title">Capacité d'accueil</h4>
+                <ul class="caracteristic-list">
+                    <li class="caracteristic">De 2 à 6 personnes</li>
+                </ul>
+            </div>
+        </div>
+        <div class="reservation">
+            <header class="reservation__header">
+                <p class="reservation__price">par demi-journée <strong>18€</strong></p>
+                <p class="reservation__reviews">
+                    <span class="review_star"></span>
+                    <span class="review_star"></span>
+                    <span class="review_star"></span>
+                    <span class="review_star"></span>
+                    <span class="review_star review_star--empty"></span>
+                    168 avis
+                </p>
+            </header>
+            <div class="reservation__selection">
+                <label for="datepicker" class="reservation__label">Date</label>
+                <input type="text" id="datepicker" class="reservation__input">
+            </div>
+            <div class="reservation__selection">
+                <label for="duree" class="reservation__label">Durée</label>
+                <div class="reservation__customdropdown">
+                    <select name="duree" id="duree" class="reservation__select">
+                        <option>Demi-journée</option>
+                        <option>Journée entière</option>
+                    </select>
+                </div>
+            </div>
+            <div class="reservation__selection">
+                <label for="nb-visiteurs" class="reservation__label">Nombre de visiteurs</label>
+                <div class="reservation__customdropdown">
+                    <select name="nb-visiteurs" id="nb-visiteurs" class="reservation__select">
+                        <option>1 personne</option>
+                        <option>2 personnes</option>
+                        <option>3 personnes</option>
+                        <option>4 personnes</option>
+                    </select>
+                </div>
+            </div>
+            <button class="reservation__submit" type="submit">Réserver</button>
+        </div>
+    </main>
+{% endblock %}

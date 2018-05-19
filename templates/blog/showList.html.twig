@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}  
+    
+{% block body %}
+
+<div class="container">
+    <h2>
+        Blog page
+    </h2>
+</div>
+<div class="container">
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-lg-4">
+                <div class="homecard__imgWrap">
+                    <img src="/uploads/{{ article.firstImage }}" alt="">
+                </div>
+                <div class="homecard__body">
+                    <h5 class="homecard-title">{{ article.title }}</h5>
+                    <p class="homecard-text">{{ article.content }}</p>
+                    <a href="{{ path('article_show', {'slug': article.slug}) }}">Read article</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
