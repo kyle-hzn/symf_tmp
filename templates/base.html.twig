@@ -17,7 +17,7 @@
 <body>
 
 <header class="header">
-    <a class="home-link" href="/">
+    <a class="home-link" href="{{ path('homepage_show')}}">
         <img src="{{ asset('/images/logo.png') }}" alt="logo" class="home-link__image">
     </a>
     <div class="search">
@@ -28,7 +28,7 @@
         <a href="#" class="navigation__link">Connexion</a>
         <a href="#" class="navigation__link">Inscription</a>
         <a href="#" class="navigation__link">Déposer une annonce</a>
-        <a href="#" class="navigation__link">Les piscines</a>
+        <a href="{{ path('piscines_show')}}" class="navigation__link">Les piscines</a>
     </nav>
 </header>
         {% block body %}

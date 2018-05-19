@@ -25,22 +25,81 @@
             <div class="caracteristics">
                 <h4 class="caracteristics__title">Equipements</h4>
                 <ul class="caracteristic-list">
-                    <li class="caracteristic caracteristic--is-present">Barbecue</li>
-                    <li class="caracteristic caracteristic--is-not-present">Serviettes fournies</li>
-                    <li class="caracteristic caracteristic--is-not-present">Tobogan</li>
-                    <li class="caracteristic caracteristic--is-present">Transat</li>
-                    <li class="caracteristic caracteristic--is-present">Douche</li>
-                    <li class="caracteristic caracteristic--is-present">Pataugeoir enfant</li>
-                    <li class="caracteristic caracteristic--is-not-present">Table de ping-pong</li>
-                    <li class="caracteristic caracteristic--is-present">Chauffée</li>
-                    <li class="caracteristic caracteristic--is-present">Réfrigérateur</li>
+                    {% if piscine.tobogan %}
+                        <li class="caracteristic caracteristic--is-present">Barbecue</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Barbecue</li>
+                    {% endif %}
+                    {% if piscine.towels %}
+                        <li class="caracteristic caracteristic--is-present">Serviettes fournies</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Serviettes fournies</li>
+                    {% endif %}
+                    {% if piscine.barbecue %}
+                        <li class="caracteristic caracteristic--is-present">Barbecue</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Barbecue</li>
+                    {% endif %}
+                    {% if piscine.chair %}
+                        <li class="caracteristic caracteristic--is-present">Transat</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Transat</li>
+                    {% endif %}
+                    {% if piscine.shower %}
+                        <li class="caracteristic caracteristic--is-present">Douche</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Douche</li>
+                    {% endif %}
+                    {% if piscine.kidsGames %}
+                        <li class="caracteristic caracteristic--is-present">Pataugeoir enfant</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Pataugeoir enfant</li>
+                    {% endif %}
+                    {% if piscine.pingPong %}
+                        <li class="caracteristic caracteristic--is-present">Table de ping-pong</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Table de ping-pong</li>
+                    {% endif %}
+                    {% if piscine.heat %}
+                        <li class="caracteristic caracteristic--is-present">Chauffée</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Chauffée</li>
+                    {% endif %}
+                    {% if piscine.fridge %}
+                        <li class="caracteristic caracteristic--is-present">Réfrigérateur</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Réfrigérateur</li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="caracteristics">
                 <h4 class="caracteristics__title">Restauration</h4>
                 <ul class="caracteristic-list">
-                    <li class="caracteristic caracteristic--is-present">Non</li>
-                    <li class="caracteristic caracteristic--is-not-present">Oui</li>
+                    {% if piscine.restauration %}
+                        <li class="caracteristic caracteristic--is-present">Oui</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Non</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="caracteristics">
+                <h4 class="caracteristics__title">Règlement intérieur</h4>
+                <ul class="caracteristic-list">
+                    {% if piscine.calm %}
+                        <li class="caracteristic caracteristic--is-present">Calme exigé</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Calme exigé</li>
+                    {% endif %}
+                    {% if piscine.smoke %}
+                        <li class="caracteristic caracteristic--is-present">Fumeur autorisé</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Non fumeur</li>
+                    {% endif %}
+                    {% if piscine.pets %}
+                        <li class="caracteristic caracteristic--is-present">Animaux tolérés</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Animaux interdits</li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="caracteristics">
@@ -49,10 +108,40 @@
                     <li class="caracteristic">De 2 à 6 personnes</li>
                 </ul>
             </div>
+            <div class="caracteristics">
+                <h4 class="caracteristics__title">Gratuit pour les moins de 8 ans</h4>
+                <ul class="caracteristic-list">
+                    {% if piscine.kidsFree %}
+                        <li class="caracteristic caracteristic--is-present">Oui</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Non</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="caracteristics">
+                <h4 class="caracteristics__title">Enfants bienvenus (accompagnés d'un adulte)</h4>
+                <ul class="caracteristic-list">
+                    {% if piscine.kids %}
+                        <li class="caracteristic caracteristic--is-present">Oui</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Non</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="caracteristics">
+                <h4 class="caracteristics__title">Propriétaires présents dans la maison au moment de la location</h4>
+                <ul class="caracteristic-list">
+                    {% if piscine.ownerPresence %}
+                        <li class="caracteristic caracteristic--is-present">Oui</li>
+                    {% else %}
+                        <li class="caracteristic caracteristic--is-not-present">Non</li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
         <div class="reservation">
             <header class="reservation__header">
-                <p class="reservation__price">par demi-journée <strong>18€</strong></p>
+                <p class="reservation__price">par demi-journée <strong>{{ piscine.price }}</strong></p>
                 <p class="reservation__reviews">
                     <span class="review_star"></span>
                     <span class="review_star"></span>
