@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Pool;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +36,33 @@ class PoolController extends Controller
             'piscines' => $piscines
         ));
 
+    }
+
+    /**
+     * Creates a new pool entity.
+     *
+     */
+    /**
+     * @Route("/ajouter-piscine", name="addpool_show")
+     */
+    public function newAction(Request $request)
+    {
+        $piscine = new Pool();
+        $poolForm = $this->createForm('App\Form\PoolType', $piscine);
+        $poolForm->handleRequest($request);
+
+        if ($poolForm->isSubmitted() && $poolForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($piscine);
+            $em->flush();
+
+            return $this->redirectToRoute('piscines_show', array('id' => $piscine->getId()));
+        }
+
+        return $this->render('pool/new.html.twig', array(
+            'piscine' => $piscine,
+            'form' => $poolForm->createView(),
+        ));
     }
 
 }

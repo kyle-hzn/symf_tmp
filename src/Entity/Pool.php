@@ -59,20 +59,20 @@ class Pool
      */
     private $latitude;
 
-    /**
-     * @ORM\Column(type="string", length=150)
-     */
-    private $owner;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $ownerImage;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $ownerImageFile;
+//    /**
+//     * @ORM\Column(type="string", length=150)
+//     */
+//    private $owner;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    private $ownerImage;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    private $ownerImageFile;
 
     /**
      * @ORM\Column(type="boolean")
@@ -365,41 +365,41 @@ class Pool
         return $this->updatedAt;
     }
 
-    public function getOwner(): ?string
-    {
-        return $this->owner;
-    }
-
-    public function setOwner(string $owner): self
-    {
-        $this->owner = $owner;
-
-        return $this;
-    }
-
-    public function getOwnerImage(): ?string
-    {
-        return $this->ownerImage;
-    }
-
-    public function setOwnerImage(string $ownerImage): self
-    {
-        $this->ownerImage = $ownerImage;
-
-        return $this;
-    }
-
-    public function getOwnerImageFile(): ?string
-    {
-        return $this->ownerImageFile;
-    }
-
-    public function setOwnerImageFile(string $ownerImageFile): self
-    {
-        $this->ownerImageFile = $ownerImageFile;
-
-        return $this;
-    }
+//    public function getOwner(): ?string
+//    {
+//        return $this->owner;
+//    }
+//
+//    public function setOwner(string $owner): self
+//    {
+//        $this->owner = $owner;
+//
+//        return $this;
+//    }
+//
+//    public function getOwnerImage(): ?string
+//    {
+//        return $this->ownerImage;
+//    }
+//
+//    public function setOwnerImage(string $ownerImage): self
+//    {
+//        $this->ownerImage = $ownerImage;
+//
+//        return $this;
+//    }
+//
+//    public function getOwnerImageFile(): ?string
+//    {
+//        return $this->ownerImageFile;
+//    }
+//
+//    public function setOwnerImageFile(string $ownerImageFile): self
+//    {
+//        $this->ownerImageFile = $ownerImageFile;
+//
+//        return $this;
+//    }
 
     public function getTobogan(): ?bool
     {
