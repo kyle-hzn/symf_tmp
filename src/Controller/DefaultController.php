@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Blog;
 use App\Entity\Pool;
+use App\Entity\User;
 
 class DefaultController extends Controller
 {
@@ -17,11 +18,13 @@ class DefaultController extends Controller
     {
         $articles = $this->getDoctrine()->getRepository('App\Entity\Blog')->findAll();
         $piscines = $this->getDoctrine()->getRepository('App\Entity\Pool')->findAll();
+        $user = $this->getDoctrine()->getRepository('App\Entity\User')->findAll();
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
             'articles' => $articles,
-            'piscines' => $piscines
+            'piscines' => $piscines,
+            'user' => $user
         ]);
     }
 }

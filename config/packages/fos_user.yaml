@@ -1,0 +1,19 @@
+fos_user:
+    db_driver: orm
+    user_class: App\Entity\User
+    firewall_name: main
+    from_email:
+        address: kyle.hazan@gmail.com
+        sender_name: kyle
+    service:
+        mailer: fos_user.mailer.twig_swift
+    resetting:
+        email:
+            template: AcmeDemoBundle:User:resetting.email.twig
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                address: kyle.hazan@gmail.com
+                sender_name: AirPool Admin
+            template: 'email/email.html.twig'

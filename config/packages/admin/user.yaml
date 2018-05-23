@@ -1,0 +1,22 @@
+easy_admin:
+    design:
+            menu:
+                - { entity: 'Utilisateurs', icon: 'user' }
+    entities:
+      Utilisateurs:
+              class: App\Entity\User
+              title: 'User'
+              list:
+                  fields:
+                      - { property: 'id'}
+                      - { property: 'username', label: 'Nom utilisateur'}
+                      - { property: 'roles', label: 'Role'}
+                      - { property: 'enabled', label: 'Actif'}
+                      - { property: 'lastLogin', label: 'Derniere connexion'}
+              form:
+                  fields:
+                      - { property: 'username', label: 'Nom utilisateur'}
+                      - { property: 'email', label: 'Adresse mail'}
+                      - { property: 'roles', label: 'Role', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                      - { property: 'plainPassword', type: 'text', type_options: { required: false } }
+                      - { property: 'enabled', label: 'Actif'}

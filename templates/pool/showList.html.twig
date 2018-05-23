@@ -1,36 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<main class="app app--home">
-    <section class="section">
-        <header class="section__header">
-            <h2 class="section__title">Les piscines de nos utilisateurs</h2>
-            <h3 class="section__subtitle">Les piscines les plus appréciées du moment</h3>
+    <main class="app app--page-search">
+        <header class="search__filters">
+            <button class="search__filter">Dates</button>
+            <button class="search__filter">Personnes</button>
+            <button class="search__filter">Prix</button>
+            <button class="search__filter">filtres +</button>
         </header>
-        <div class="pools">
-            {% for piscine in piscines %}
-                <div class="pool-preview">
-                    <div class="pool-preview__image">
-                        <a href="{{ path('piscine_show', {'slug': piscine.slug}) }}"><img src="/uploads/{{ piscine.image }}" alt="piscine"></a>
+        <section class="search__content">
+            <div class="result-previews">
+                {% for piscine in piscines %}
+                    <div class="pool-preview">
+                        <div class="pool-preview__image">
+                            <a href="{{ path('piscine_show', {'slug': piscine.slug}) }}"><img src="/uploads/{{ piscine.image }}" alt="piscine"></a>
+                        </div>
+                        <div class="pool-preview__favorite">
+                            <a href="#" title="add to favorite">
+                                <svg width="33" height="30" viewBox="0 0 33 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="favorite__svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.0147 0.000488281C28.711 0.000488281 32.4639 3.76172 32.9454 8.9458C32.9825 9.1748 33.1387 10.3799 32.6641 12.3442C31.9805 15.1797 30.3995 17.7573 28.0958 19.7998L16.4014 30L4.90435 19.7988C2.59966 17.7573 1.01958 15.1792 0.335989 12.3442C-0.13862 10.3789 0.0166535 9.17383 0.0547394 8.94531C0.536185 3.76123 4.28911 0 8.9854 0C12.0645 0 14.8116 1.61279 16.4092 4.28564C18.0206 1.64697 20.8858 0.000488281 24.0147 0.000488281ZM27.2471 18.877C29.3565 17.0078 30.8047 14.6494 31.4288 12.0605C31.878 10.2007 31.6934 9.14941 31.6924 9.13965C31.2715 4.53857 28.0459 1.2417 24.0157 1.2417C20.9708 1.2417 18.2139 3.07227 16.9903 5.90479L16.4063 7.25928L15.8213 5.90479C14.5792 3.02832 11.96 1.24121 8.9854 1.24121C4.95415 1.24121 1.72954 4.53809 1.31743 9.08008L1.30767 9.14258C1.30669 9.14941 1.12212 10.1997 1.57134 12.0596C2.19732 14.6484 3.64361 17.0068 5.75786 18.8794L16.4092 28.3311L27.2471 18.877Z" fill="black" fill-opacity="0.7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="pool-preview__detail">
+                            <a href="#">
+                                <p class="pool-preview__type">{{ piscine.type }}</p>
+                                <p class="pool-preview__title">{{ piscine.name }}</p>
+                                <p class="pool-preview__price">{{ piscine.price }}€ / demi-journée / personne</p>
+                            </a>
+                        </div>
                     </div>
-                    <div class="pool-preview__favorite">
-                        <a href="#" title="add to favorite">
-                            <svg width="33" height="30" viewBox="0 0 33 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="favorite__svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M24.0147 0.000488281C28.711 0.000488281 32.4639 3.76172 32.9454 8.9458C32.9825 9.1748 33.1387 10.3799 32.6641 12.3442C31.9805 15.1797 30.3995 17.7573 28.0958 19.7998L16.4014 30L4.90435 19.7988C2.59966 17.7573 1.01958 15.1792 0.335989 12.3442C-0.13862 10.3789 0.0166535 9.17383 0.0547394 8.94531C0.536185 3.76123 4.28911 0 8.9854 0C12.0645 0 14.8116 1.61279 16.4092 4.28564C18.0206 1.64697 20.8858 0.000488281 24.0147 0.000488281ZM27.2471 18.877C29.3565 17.0078 30.8047 14.6494 31.4288 12.0605C31.878 10.2007 31.6934 9.14941 31.6924 9.13965C31.2715 4.53857 28.0459 1.2417 24.0157 1.2417C20.9708 1.2417 18.2139 3.07227 16.9903 5.90479L16.4063 7.25928L15.8213 5.90479C14.5792 3.02832 11.96 1.24121 8.9854 1.24121C4.95415 1.24121 1.72954 4.53809 1.31743 9.08008L1.30767 9.14258C1.30669 9.14941 1.12212 10.1997 1.57134 12.0596C2.19732 14.6484 3.64361 17.0068 5.75786 18.8794L16.4092 28.3311L27.2471 18.877Z" fill="black" fill-opacity="0.7"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="pool-preview__detail">
-                        <a href="#">
-                            <p class="pool-preview__type">{{ piscine.type }}</p>
-                            <p class="pool-preview__title">{{ piscine.name }}</p>
-                            <p class="pool-preview__price">{{ piscine.price }}€ / demi-journée / personne</p>
-                        </a>
-                    </div>
-                </div>
-            {%  endfor %}
-        </div>
-    </section>
-</main>
-
+                {%  endfor %}
+            </div>
+            <div class="result-map">
+                CARTE
+            </div>
+        </section>
+    </main>
 {% endblock %}

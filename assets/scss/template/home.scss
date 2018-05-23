@@ -3,10 +3,11 @@
   align-items: center;
   justify-content:center;
   text-align: center;
-
+  flex-wrap: wrap;
 }
 .presentation-step{
   margin:2rem;
+  width:250px;
 }
 
 .step{
@@ -21,8 +22,15 @@
 .category-cards,
 .pools{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1.5rem;
+
+  @include breakpoint(small){
+    grid-template-columns: 1fr 1fr;
+  }
+  @include breakpoint(medium){
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .category-card{

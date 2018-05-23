@@ -1,2 +1,7 @@
+easy_admin:
+    site_name: "<span style='font-family: Montserrat'>AIRPOOL</span>"
+    design:
+        form_theme: 'vertical'
+        brand_color: '#212121'
 imports:
     - { resource: admin/ }

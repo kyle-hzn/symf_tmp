@@ -25,10 +25,14 @@
         <button type="submit" class="search__submit"><img src="{{ asset('/images/loupe.png') }}" alt="Soumettre" class="search__submit__image"></button>
     </div>
     <nav class="navigation">
-        <a href="#" class="navigation__link">Connexion</a>
-        <a href="#" class="navigation__link">Inscription</a>
-        <a href="{{ path('addpool_show') }}" class="navigation__link">Déposer une annonce</a>
-        <a href="{{ path('piscines_show')}}" class="navigation__link">Les piscines</a>
+        {% if is_granted('ROLE_USER') %}
+            <a href="/profile" class="navigation__link">Profil</a>
+        {% else %}
+            <a href="/login" class="navigation__link">Connexion</a>
+            <a href="/inscription" class="navigation__link">Inscription</a>
+       {% endif %}
+            <a href="{{ path('addpool_show') }}" class="navigation__link">Déposer une annonce</a>
+            <a href="{{ path('piscines_show')}}" class="navigation__link">Les piscines</a>
     </nav>
 </header>
         {% block body %}

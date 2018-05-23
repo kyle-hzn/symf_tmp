@@ -1,13 +1,19 @@
 .app--page-produit{
-  display: grid;
-  grid-template-columns: 2fr 1fr;
   border-top:1px solid #9C9C9C;
-  align-items: start;
+
+  @include breakpoint(medium){
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
 }
 
 .product{
-  padding:0 0 0 1rem ;
-  border-left: 1px solid #C4C4C4;
+
+  @include breakpoint(medium){
+    padding:0 0 0 1rem ;
+    border-left: 1px solid #C4C4C4;
+  }
 }
 
 .product__image-container{
@@ -61,8 +67,10 @@
 .reservation{
   background: #FFFFFF;
   border: 1px solid #C4C4C4;
-  border-right:none;
   padding:2rem 3rem;
+  @include breakpoint(medium){
+    border-right:none;
+  }
 }
 .reservation__header{
   margin-bottom:3rem;
@@ -148,8 +156,11 @@
 }
 .caracteristic-list{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
+  @include breakpoint(small){
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 .caracteristics__title{
   margin-bottom:1rem;
@@ -158,6 +169,7 @@
 
 .caracteristic{
   margin:0.5rem 0;
+  padding:0 0.25rem;
 }
 .caracteristic--is-not-present{
   opacity:0.4;

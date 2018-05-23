@@ -1,4 +1,7 @@
 easy_admin:
+    design:
+            menu:
+                - { entity: 'Blog', icon: 'file' }
     entities:
       Blog:
           class: App\Entity\Blog

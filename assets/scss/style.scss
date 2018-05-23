@@ -1,6 +1,7 @@
 @import "reset";
 @import "global";
 @import "pikaday";
+@import "mixins/breakpoints";
 
 /* Template segments */
 @import "template/header";
@@ -8,4 +9,6 @@
 @import "template/main";
 @import "template/hero";
 @import "template/home";
+@import "template/login";
 @import "template/product";
+@import "template/search";

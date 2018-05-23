@@ -1,0 +1,93 @@
+.app--login{
+  background: linear-gradient(
+                  rgba(0, 0, 0, 0.5),
+                  rgba(0, 0, 0, 0.45)
+  ), url('../images/superpool.jpg') no-repeat;
+  filter: alpha(1);
+  background-size: cover;
+  min-height:80vh;
+  padding-top:8rem;
+  padding-bottom:8rem;
+}
+
+.popup{
+  background: white;
+  border-radius: 4px;
+  padding:2rem 1rem 1rem;
+  text-align: center;
+  width:80%;
+  min-width:300px;
+  max-width: 550px;
+  margin:0 auto;
+
+  @include breakpoint(small){
+    width:60%;
+    margin:0 auto;
+    padding:4rem 4rem 2rem;
+  }
+  @include breakpoint(medium){
+    width:50%;
+  }
+}
+
+.popup__title{
+  font-family: $font-accent;
+  font-size:1.2rem;
+  margin-bottom:1rem;
+
+  @include breakpoint(small){
+    font-size:1.8rem;
+    margin-bottom:2rem;
+  }
+}
+
+.login__input{
+  input{
+    width:100%;
+    margin-bottom:1.5rem;
+    padding:0.5rem 1rem;
+    background-color: white;
+    color: black;
+    font-size: inherit;
+    padding: .75rem 1rem .75rem 2.5rem;
+    border: 1px solid #c4c4c4;
+    letter-spacing: 1px;
+    font-family:$font-global;
+    border-radius: 4px;
+    text-indent: 0.01px;
+    text-overflow: '';
+    /*Hiding the select arrow for firefox*/
+    -moz-appearance: none;
+    /*Hiding the select arrow for chrome*/
+    -webkit-appearance:none;
+    /*Hiding the select arrow default implementation*/
+    appearance: none;
+    outline:none;
+  }
+}
+
+.login__submit{
+  background: #072727;
+  border-radius: 4px;
+  color: white;
+  font-weight:bold;
+  width:100%;
+  padding:0.65rem 1rem;
+  font-size:1rem;
+  margin-top:2rem;
+  margin-bottom: 1rem;
+  border:none;
+  font-family:inherit;
+  letter-spacing: 0;
+}
+
+.login__link{
+  font-weight:normal;
+  color: black;
+  border-bottom:1px solid black;
+  transition: all .3s ease-out;
+  &:hover{
+    color: $light-blue;
+    border-color: $light-blue;
+  }
+}

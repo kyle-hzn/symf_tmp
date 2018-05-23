@@ -1,52 +1,65 @@
 easy_admin:
+    design:
+            menu:
+                - { entity: 'Piscines', icon: 'image' }
     entities:
-      Pool:
+      Piscines:
           class: App\Entity\Pool
           title: 'Piscines'
           form:
               fields:
-                  - { property: 'type', label: 'Type de piscine', css_class: 'col-lg-6'}
-                  - { property: 'name', label: 'Nom du spot', css_class: 'col-lg-6'}
-                  - { property: 'price', label: 'Prix par personne', css_class: 'col-lg-3'}
-                  - { property: 'slug', label: 'Slug', css_class: 'col-lg-3'}
-                  - { property: 'longitude', label: 'Longitude', css_class: 'col-lg-3'}
-                  - { property: 'latitude', label: 'Latitude', css_class: 'col-lg-3'}
-                  - { property: 'imageFile', type: 'vich_image', base_path: '%app.path.product_images%', label: 'Image piscine', css_class: 'col-sm-12'}
-                  - { property: 'tobogan', label: 'Tobogan', css_class: 'col-lg-3'}
-                  - { property: 'towels', label: 'Serviettes', css_class: 'col-lg-3'}
-                  - { property: 'barbecue', label: 'Barbecue', css_class: 'col-lg-3'}
-                  - { property: 'kidsGames', label: 'Pataugeoir enfant', css_class: 'col-lg-3'}
-                  - { property: 'shower', label: 'Douche', css_class: 'col-lg-3'}
-                  - { property: 'chair', label: 'Fauteuil transat', css_class: 'col-lg-3'}
-                  - { property: 'fridge', label: 'Frigo', css_class: 'col-lg-3'}
-                  - { property: 'heat', label: 'Chauffée', css_class: 'col-lg-3'}
-                  - { property: 'pingPong', label: 'Table de ping pong', css_class: 'col-lg-3'}
-                  - { property: 'restauration', label: 'Restauration', css_class: 'col-lg-3'}
-                  - { property: 'pets', label: 'Animaux', css_class: 'col-lg-3'}
-                  - { property: 'smoke', label: 'Fumeur', css_class: 'col-lg-3'}
-                  - { property: 'calm', label: 'Calme', css_class: 'col-lg-3'}
-                  - { property: 'kids', label: 'Enfants', css_class: 'col-lg-3'}
-                  - { property: 'kidsFree', label: 'Gratuit pour les enfants de moins de 8 ans', css_class: 'col-lg-3'}
-                  - { property: 'ownerPresence', label: 'Presence des proprietaires', css_class: 'col-lg-3'}
+                  - { type: 'group', css_class: 'col-sm-8', label: 'Informations générales', icon: 'info' }
+                  - { property: 'type', label: 'Type de piscine'}
+                  - { type: 'divider' }
+                  - { property: 'name', label: 'Nom du spot'}
+                  - { type: 'divider' }
+                  - { property: 'price', label: 'Prix par personne'}
+                  - { type: 'divider' }
+                  - { property: 'slug', label: 'Slug'}
+                  - { type: 'group', css_class: 'col-sm-4', label: 'Localisation', icon: 'map-marker'}
+                  - { property: 'longitude', label: 'Longitude'}
+                  - { type: 'divider' }
+                  - { property: 'latitude', label: 'Latitude'}
+                  - { type: 'group', css_class: 'col-sm-4', label: 'Medias', icon: 'image'}
+                  - { property: 'imageFile', type: 'vich_image', base_path: '%app.path.product_images%', label: 'Image piscine'}
+                  - { type: 'group', css_class: 'col-sm-8', label: 'Equipements', icon: 'home'}
+                  - { property: 'tobogan', label: 'Tobogan'}
+                  - { property: 'towels', label: 'Serviettes'}
+                  - { property: 'barbecue', label: 'Barbecue'}
+                  - { property: 'kidsGames', label: 'Pataugeoir enfant'}
+                  - { property: 'shower', label: 'Douche'}
+                  - { type: 'divider' }
+                  - { property: 'chair', label: 'Fauteuil transat'}
+                  - { property: 'fridge', label: 'Frigo'}
+                  - { property: 'heat', label: 'Chauffée'}
+                  - { property: 'pingPong', label: 'Table de ping pong'}
+                  - { property: 'restauration', label: 'Restauration'}
+                  - { type: 'group', css_class: 'col-sm-4', label: 'Reglements', icon: 'book-open'}
+                  - { property: 'pets', label: 'Animaux'}
+                  - { property: 'smoke', label: 'Fumeur'}
+                  - { property: 'calm', label: 'Calme'}
+                  - { property: 'kids', label: 'Enfants'}
+                  - { property: 'kidsFree', label: 'Gratuit pour les enfants de moins de 8 ans'}
+                  - { property: 'ownerPresence', label: 'Presence des proprietaires'}
           list:
               title: "Piscine"
               fields:
-                  - { property: 'type', label: 'Type de piscine', css_class: 'col-lg-6'}
-                  - { property: 'name', label: 'Nom du spot', css_class: 'col-lg-6'}
+                  - { property: 'type', label: 'Type de piscine'}
+                  - { property: 'name', label: 'Nom du spot'}
                   - { property: 'price', label: 'Prix par personne', css_class: 'col-lg-12'}
-                  - { property: 'tobogan', label: 'Tobogan', css_class: 'col-lg-3'}
-                  - { property: 'towels', label: 'Serviettes', css_class: 'col-lg-3'}
-                  - { property: 'barbecue', label: 'Barbecue', css_class: 'col-lg-3'}
-                  - { property: 'kidsGames', label: 'Pataugeoir enfant', css_class: 'col-lg-3'}
-                  - { property: 'shower', label: 'Douche', css_class: 'col-lg-3'}
-                  - { property: 'chair', label: 'Fauteuil transat', css_class: 'col-lg-3'}
-                  - { property: 'fridge', label: 'Frigo', css_class: 'col-lg-3'}
-                  - { property: 'heat', label: 'Chauffée', css_class: 'col-lg-3'}
-                  - { property: 'pingPong', label: 'Table de ping pong', css_class: 'col-lg-3'}
-                  - { property: 'restauration', label: 'Restauration', css_class: 'col-lg-3'}
-                  - { property: 'pets', label: 'Animaux', css_class: 'col-lg-3'}
-                  - { property: 'smoke', label: 'Fumeur', css_class: 'col-lg-3'}
-                  - { property: 'calm', label: 'Calme', css_class: 'col-lg-3'}
-                  - { property: 'kids', label: 'Enfants', css_class: 'col-lg-3'}
-                  - { property: 'kidsFree', label: 'Gratuit pour les enfants de moins de 8 ans', css_class: 'col-lg-3'}
-                  - { property: 'ownerPresence', label: 'Presence des proprietaires', css_class: 'col-lg-3'}
+                  - { property: 'tobogan', label: 'Tobogan'}
+                  - { property: 'towels', label: 'Serviettes'}
+                  - { property: 'barbecue', label: 'Barbecue'}
+                  - { property: 'kidsGames', label: 'Pataugeoir enfant'}
+                  - { property: 'shower', label: 'Douche'}
+                  - { property: 'chair', label: 'Fauteuil transat'}
+                  - { property: 'fridge', label: 'Frigo'}
+                  - { property: 'heat', label: 'Chauffée'}
+                  - { property: 'pingPong', label: 'Table de ping pong'}
+                  - { property: 'restauration', label: 'Restauration'}
+                  - { property: 'pets', label: 'Animaux'}
+                  - { property: 'smoke', label: 'Fumeur'}
+                  - { property: 'calm', label: 'Calme'}
+                  - { property: 'kids', label: 'Enfants'}
+                  - { property: 'kidsFree', label: 'Gratuit pour les enfants de moins de 8 ans'}
+                  - { property: 'ownerPresence', label: 'Presence des proprietaires'}
